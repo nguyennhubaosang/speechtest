@@ -42,5 +42,5 @@ print("code {}\n".format(r.status_code))
 
 #print("json \n" + json.dumps(r.json(), indent= 4, sort_keys=True))
 
-data = json.dumps(r, separators=(',', ':'), sort_keys=True, indent= 3)
+data = json.dumps(r, separators=(',', ':'), sort_keys=True, indent= 3) 
 print(data)
