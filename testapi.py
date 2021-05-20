@@ -1,9 +1,11 @@
 
+from collections import defaultdict
 import requests
 import json
 import pandas as pd
 from pandas.io.json import json_normalize, build_table_schema
 import flat_table
+from requests.api import get
 
 ###
 import speech_recognition as sr     
@@ -39,8 +41,15 @@ r = requests.get(url, headers = {"app_id": app_id, "app_key": app_key})
 ## Result
 print("code {}\n".format(r.status_code))
 #print("text \n" + r.text)
+dt = r.json()['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]
 
-#print("json \n" + json.dumps(r.json(), indent= 4, sort_keys=True))
+for i, value in dt.items():
+        if i == 'definitions':
+                print(i, '=>>', *value)
 
-data = json.dumps(r, separators=(',', ':'), sort_keys=True, indent= 3) 
-print(data)
+#rs = dt['definitions'] 
+#rs2 = dt['examples']
+#print(type(rs))
+#print('Definition: ' + str(rs))
+#print('Example :' + str(rs2))
+#print(*dt, sep="\n")
