@@ -7,7 +7,7 @@ from pandas.io.json import json_normalize, build_table_schema
 import flat_table
 from requests.api import get
 
-###
+### Google Speech 
 import speech_recognition as sr     
 r = sr.Recognizer()
 with sr.Microphone() as source:
@@ -24,7 +24,7 @@ except sr.UnknownValueError:
 except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-###
+### GET OxfordDict API
 
 app_id = "82cc5758"
 app_key = "abde664b38ee6e7930e239b11690565e"
@@ -38,7 +38,8 @@ url = "https://od-api.oxforddictionaries.com/api/v2/" + endpoint + "/" + languag
 r = requests.get(url, headers = {"app_id": app_id, "app_key": app_key})
 
 
-## Result
+## Result >>Issue: Pretty Show "GET speech api" 
+
 print("code {}\n".format(r.status_code))
 #print("text \n" + r.text)
 dt = r.json()['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]
