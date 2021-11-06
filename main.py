@@ -1,7 +1,7 @@
 # from speech_converter import Converter
+import json
 from converter import Converter
 from translator import Translator
-
 
 try:
     # Khởi tạo converter
@@ -15,7 +15,7 @@ try:
     # Gọi api sang oxford để dịch
     result = translator.translate(vocal)
 
-    print(result)
+    print(json.dumps(result, indent=2))
 
 except ValueError as exp:
     print("Error", exp)

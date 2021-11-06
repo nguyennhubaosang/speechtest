@@ -15,6 +15,6 @@ class Translator:
         req = requests.get(url, headers = {"app_id": self.__app_id, "app_key": self.__app_key})
 
         if req.status_code == 200:
-            return req.json()['results'][0]['lexicalEntries'][0]['entries'][0]['senses'][0]
+            return req.json()
 
         raise ValueError("Fail to call api")
